@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Wisdom Ventures | Bike Rental</title>
+  <meta name="description" content="Rent road and mountain bikes from Wisdom Ventures. Pick a bike, rent it online, return it with your phone number.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='11' fill='white' stroke='%23d91f26' stroke-width='6'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#top" aria-label="Wisdom Ventures home">
+      <span class="brand-mark" aria-hidden="true"></span>
+      Wisdom Ventures
+    </a>
+    <nav>
+      <a href="#fleet">Bikes</a>
+      <a href="#return">Return a bike</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <h1>Ride out<br>today.</h1>
+        <p>Road bikes and mountain bikes, ready when you are. Choose one, rent it in under a minute, and bring it back with just your phone number.</p>
+        <a class="btn btn-red" href="#fleet">See available bikes</a>
+      </div>
+      <div class="hero-visual">
+        <div class="disc" aria-hidden="true"></div>
+        <img src="images/road-white.jpg" alt="White road bike with disc brakes" width="900" height="600">
+      </div>
+    </section>
+
+    <section class="fleet" id="fleet">
+      <div class="section-head">
+        <h2>Our bikes</h2>
+        <div class="filters" role="group" aria-label="Filter bikes">
+          <button class="chip is-on" data-filter="all" aria-pressed="true">All</button>
+          <button class="chip" data-filter="Road" aria-pressed="false">Road</button>
+          <button class="chip" data-filter="Mountain" aria-pressed="false">Mountain</button>
+        </div>
+      </div>
+      <p id="fleet-status" class="status" role="status">Loading bikes…</p>
+      <div id="grid" class="grid"></div>
+    </section>
+
+    <section class="return" id="return">
+      <div class="return-inner">
+        <div>
+          <h2>Return a bike</h2>
+          <p>Enter the phone number you rented with and we will find your bikes.</p>
+        </div>
+        <form id="lookup-form" novalidate>
+          <label for="return-phone">Phone number</label>
+          <div class="row">
+            <input id="return-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="08012345678" required>
+            <button class="btn btn-white" type="submit">Find my rentals</button>
+          </div>
+          <p id="return-msg" class="msg" role="status"></p>
+          <ul id="my-rentals" class="rentals"></ul>
+        </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Wisdom Ventures</span>
+    <span>Warri, Delta State, Nigeria</span>
+  </footer>
+
+  <dialog id="rent-dialog" aria-labelledby="rent-title">
+    <form id="rent-form" novalidate>
+      <h3 id="rent-title">Rent this bike</h3>
+      <p id="rent-bike" class="dialog-bike"></p>
+      <label for="rent-phone">Phone number</label>
+      <input id="rent-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="08012345678" required>
+      <label for="rent-name">Your name <span class="hint">(new customers only)</span></label>
+      <input id="rent-name" name="name" type="text" autocomplete="name" maxlength="40" placeholder="Full name">
+      <p id="rent-msg" class="msg" role="alert"></p>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" type="button" id="rent-cancel">Cancel</button>
+        <button class="btn btn-red" type="submit" id="rent-submit">Confirm rental</button>
+      </div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
